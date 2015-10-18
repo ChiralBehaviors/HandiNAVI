@@ -1,6 +1,6 @@
 body {
     font: 14px helvetica neue, helvetica, arial, sans-serif;
-}
+} 
 
 #logo {
     position: absolute;
@@ -17,8 +17,8 @@ body {
 }
 
 #cy {
-    height: 400px;
-    width: 100%;
+    min-height: 400px;
+    width: 80%;
     border: 2px solid #662244;
     position: relative;
     clear: both;

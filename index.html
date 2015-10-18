@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="cytoscapeSample">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="./css/style.css" rel="stylesheet"/>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap.min.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.4.9/cytoscape.min.js"></script>
-    <script
-            src="js/graphController.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/cytoscapeDirective.js"></script>
+    <script src="js/cytoscapeController.js"></script>
+    <script src="js/graphController.js"></script>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS example</title>
 </head>
-<body ng-app="app">
+<body>
 <div class="container">
     <!--Row with two columns divided in 1:2 ratio-->
     <div class="row">
@@ -37,9 +39,44 @@
             </table>
         </div>
         <div class="col-sm-8">
-            <div id="cy"></div>
+            <div id="content" class="container" ng-controller="CytoscapeCtrl">
+                <div>
+                    <button ng-click="reset()">Reset nodes</button>
+                    ||||
+                    Node
+                    <select ng-model="form.obj.objTypes" ng-options="name for name in objTypes"></select>
+                    <input ng-model="form.obj.name"/>
+                    <button ng-click="addObj()">Add node</button>
+
+                    &nbsp&nbsp&nbsp&nbsp&nbsp
+
+                    <span ng-hide="mapData.length>1">
+                        After adding 2 nodes, you can start adding connecting edges
+                    </span>
+                    <span ng-show="mapData.length>1">
+                        Edge (between 2 nodes)
+                        <select ng-model="formEdges.fromName" ng-options="c.name for c in mapData">
+                            <option value=""> From >></option>
+                        </select>
+                        <select ng-model="formEdges.toName" ng-options="c.name for c in mapData">
+                            <option value=""> To >></option>
+                        </select>
+                        <button ng-click="addEdge()">Add edge</button>
+                    </span>
+                    <hr>
+                    <cytoscape cy-data="mapData" cy-edges="edgeData" cy-click="doClick(value)"></cytoscape>
+                    <br>
+
+                    <div>This is a sample of the <a href="">Cytoscape directive</a>.
+                        add Nodes then create connections between them with Edges.
+                        <br>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+<body>
