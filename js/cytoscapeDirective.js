@@ -1,4 +1,4 @@
-angular.module('cytoscapeSample').directive('cytoscape', function($rootScope) {
+angular.module('WorkspaceExplorer').directive('cytoscape', function($rootScope) {
     // graph visualisation by - https://github.com/cytoscape/cytoscape.js
     return {
         restrict: 'E',
@@ -126,8 +126,6 @@ angular.module('cytoscapeSample').directive('cytoscape', function($rootScope) {
                     ready: function(){
                         window.cy = this;
 
-                        cy.resize();
-
                         // giddy up...
                         cy.elements().unselectify();
 
@@ -151,7 +149,7 @@ angular.module('cytoscapeSample').directive('cytoscape', function($rootScope) {
             // When the app object changed = redraw the graph
             // you can use it to pass data to be added or removed from the object without redrawing it
             // using cy.remove() / cy.add()
-            $rootScope.$on('appChanged', function(){
+            $rootScope.$on('graphChanged', function(){
                 scope.doCy();
             });
         }

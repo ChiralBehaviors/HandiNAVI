@@ -3,7 +3,7 @@
 // context (rightclick/2finger) drag to resize in graph
 // use text boxes to resize in angular
 
-var app = angular.module('cytoscapeSample');
+var app = angular.module('WorkspaceExplorer');
 
 // use a factory instead of a directive, because cy.js is not just for visualisation; you need access to the graph model and events etc
 app.factory('peopleGraph', [ '$q', function( $q ){

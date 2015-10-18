@@ -1,1 +1,1 @@
-angular.module('cytoscapeSample', []);
+angular.module('WorkspaceExplorer', ['ui.bootstrap']);

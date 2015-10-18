@@ -1,4 +1,4 @@
-angular.module('cytoscapeSample').controller('CytoscapeCtrl',function($scope, $rootScope){
+angular.module('WorkspaceExplorer').controller('CytoscapeCtrl',function($scope, $rootScope){
     // container objects
     $scope.mapData = [];
     $scope.edgeData = [];
@@ -17,7 +17,7 @@ angular.module('cytoscapeSample').controller('CytoscapeCtrl',function($scope, $r
         // adding the new Node to the nodes array
         $scope.mapData.push(newNode);
         // broadcasting the event
-        $rootScope.$broadcast('appChanged');
+        $rootScope.$broadcast('graphChanged');
         // resetting the form
         $scope.form.obj = '';
     };
@@ -33,7 +33,7 @@ angular.module('cytoscapeSample').controller('CytoscapeCtrl',function($scope, $r
         // adding the new edge object to the adges array
         $scope.edgeData.push(newEdge);
         // broadcasting the event
-        $rootScope.$broadcast('appChanged');
+        $rootScope.$broadcast('graphChanged');
         // resetting the form
         $scope.formEdges = '';
     };
@@ -50,6 +50,6 @@ angular.module('cytoscapeSample').controller('CytoscapeCtrl',function($scope, $r
     $scope.reset = function(){
         $scope.mapData = [];
         $scope.edgeData = [];
-        $rootScope.$broadcast('appChanged');
+        $rootScope.$broadcast('graphChanged');
     }
 });

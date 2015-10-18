@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="cytoscapeSample">
+<html lang="en" ng-app="WorkspaceExplorer">
 <head>
     <link href="./css/style.css" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script
@@ -15,40 +15,37 @@
     <script src="js/app.js"></script>
     <script src="js/cytoscapeDirective.js"></script>
     <script src="js/cytoscapeController.js"></script>
-    <script src="js/graphController.js"></script>
+    <script src="js/workspacesController.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS example</title>
 </head>
 <body>
 <div class="container">
-    <!--Row with two columns divided in 1:2 ratio-->
-    <div class="row">
-        <div class="col-sm-4">
-            <table id="people-table" ng-controller="PeopleCtrl">
-                <tbody>
-                <tr>
-                    <th>Name</th>
-                    <th>Weight</th>
-                </tr>
-                <tr ng-repeat="person in people">
-                    <td>{{person.name}}</td>
-                    <td><input type="number" min="1" ng-model="person.weight" ng-change="onWeightChange(person)"/></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-8">
-            <div id="content" class="container" ng-controller="CytoscapeCtrl">
-                <div>
-                    <button ng-click="reset()">Reset nodes</button>
-                    ||||
-                    Node
-                    <select ng-model="form.obj.objTypes" ng-options="name for name in objTypes"></select>
-                    <input ng-model="form.obj.name"/>
-                    <button ng-click="addObj()">Add node</button>
+    <div class="btn-group" uib-dropdown uib-keyboard-nav>
+        <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>
+            Dropdown with keyboard navigation <span class="caret"></span>
+        </button>
+        <ul class="uib-dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
+            <li role="menuitem"><a href="#">Action</a></li>
+            <li role="menuitem"><a href="#">Another action</a></li>
+            <li role="menuitem"><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li role="menuitem"><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+    <hr/>
+    <div id="content" class="container" ng-controller="CytoscapeCtrl">
+        <div>
+            <button ng-click="reset()">Reset nodes</button>
+            ||||
+            Node
+            <select ng-model="form.obj.objTypes" ng-options="name for name in objTypes"></select>
+            <input ng-model="form.obj.name"/>
+            <button ng-click="addObj()">Add node</button>
 
-                    &nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp
 
                     <span ng-hide="mapData.length>1">
                         After adding 2 nodes, you can start adding connecting edges
@@ -63,18 +60,12 @@
                         </select>
                         <button ng-click="addEdge()">Add edge</button>
                     </span>
-                    <hr>
-                    <cytoscape cy-data="mapData" cy-edges="edgeData" cy-click="doClick(value)"></cytoscape>
-                    <br>
-
-                    <div>This is a sample of the <a href="">Cytoscape directive</a>.
-                        add Nodes then create connections between them with Edges.
-                        <br>
-                    </div>
-                </div>
-            </div>
+            <hr>
+            <cytoscape cy-data="mapData" cy-edges="edgeData" cy-click="doClick(value)"></cytoscape>
+            <br>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
