@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./css/style.css" rel="stylesheet"/>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.4.9/cytoscape.min.js"></script>
+    <script
+            src="./js/app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>AngularJS example</title>
+</head>
+<body ng-app="app">
+<div id="logo"></div>
+<div id="cy"></div>
+
+<table id="people-table" ng-controller="PeopleCtrl">
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Weight</th>
+    </tr>
+    <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td><input type="number" min="1" ng-model="person.weight" ng-change="onWeightChange(person)"/></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
