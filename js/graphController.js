@@ -62,7 +62,7 @@ app.factory('peopleGraph', [ '$q', function( $q ){
 
                 ready: function(){
                     deferred.resolve( this );
-
+                    cy.resize();
                     cy.on('cxtdrag', 'node', function(e){
                         var node = this;
                         var dy = Math.abs( e.cyPosition.x - node.position().x );
